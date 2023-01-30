@@ -1,7 +1,10 @@
 import AboutCard from '@/components/aboutCard'
 import GlobalButton from '@/components/button'
+import DesignPattern from '@/components/designPattern'
 import Head from 'next/head'
 import Image from 'next/image'
+import { FiGithub, FiInstagram, FiMail } from 'react-icons/fi'
+import { BiWorld } from 'react-icons/bi'
 
 export default function Home() {
   return (
@@ -14,7 +17,7 @@ export default function Home() {
       </Head>
 
       <main className='flex flex-col w-screen text-primary-white'>
-        <nav className='fixed w-screen py-8 px-9'>
+        <nav className='fixed w-screen py-6 px-9 bgNav'>
           <ul className='flex w-full justify-around items-center flex-row text-sm'>
             <li><a href="#home">Início</a></li>
             <li><a href="#about">Sobre</a></li>
@@ -47,7 +50,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id='about' className='flex flex-col w-screen gap-8 py-20'>
+        <section id='about' className='flex flex-col w-screen gap-8 py-24'>
           <div className="flex flex-col text-primary-white text-center justify-center px-8 gap-8">
             <p className='text-sm'>Sobre</p>
 
@@ -74,29 +77,40 @@ export default function Home() {
             </h2>
 
             <p className='text-sm'>
-            Aqui estão alguns serviços que te ajudam a não ficar para traz
+              Aqui estão alguns serviços que te ajudam a não ficar para traz
             </p>
-          </div>
 
-          <div className="flex flex-col bg-timeline bg-right bg-conver bg-no-repeat px-8 text-center gap-8">
-            <div className="flex flex-col gap-8">
-              <h2 className='text-4xl'>Mas afinal como isso pode me <span>ajudar?</span></h2>
+            <div className="flex flex-col bg-timeline bg-right bg-conver bg-no-repeat text-center gap-8 pb-10">
+              <div className="flex py-40">
+                <DesignPattern />
+              </div>
 
-              <p><span>Mais de 32 mil</span> empresas empregadoras fecharam as portas nos últimos 2 anos e dentre elas <span>mais de 12 mil não possuíam websites</span> para aumentar sua captação de clientes</p>
+              <div className="flex flex-col gap-8">
+                <h2 className='text-4xl'>Mas afinal como isso pode me <span>ajudar?</span></h2>
+
+                <p><span>Mais de 32 mil</span> empresas empregadoras fecharam as portas nos últimos 2 anos e dentre elas <span>mais de 12 mil não possuíam websites</span> para aumentar sua captação de clientes</p>
+              </div>
+
+              <ul className='flex flex-col text-left px-8 ServiceList'>
+                <li className='text-sm'>Você pode ter visitas no seu site de outros lugres <span>DO MUNDO</span></li>
+                <li className='text-sm'>Seu onteúdo <span>mais acessível</span></li>
+                <li className='text-sm'>Novas <span>parcerias</span></li>
+                <li className='text-sm'><span>Mais Clientes</span></li>
+            </ul>
             </div>
-
-            <ul className='flex flex-col text-left px-8 ServiceList'>
-              <li className='text-sm'>Você pode ter visitas no seu site de outros lugres <span>DO MUNDO</span></li>
-              <li className='text-sm'>Seu onteúdo <span>mais acessível</span></li>
-              <li className='text-sm'>Novas <span>parcerias</span></li>
-              <li className='text-sm'><span>Mais Clientes</span></li>
-           </ul>
           </div>
         </section>
 
         <footer id='contats'>
-          <div className="flex">
+          <div className="flex flex-col px-8 py-20 gap-8">
             <p>Contatos:</p>
+
+            <div className="flex flex-row justify-evenly px-8">
+              <FiGithub color='#DEDEDE' size={24} />
+              <BiWorld color='#DEDEDE' size={24} />
+              <FiInstagram color='#DEDEDE' size={24} />
+              <FiMail color='#DEDEDE' size={24} />
+            </div>
           </div>
         </footer>
       </main>
