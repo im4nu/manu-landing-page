@@ -23,14 +23,15 @@ export default function AboutCard(){
         { img: presponto, name: 'Presponto - App', sub: 'Aplicativo de atendimento do ateliê Pres ponto', link: ''},
     ]
     return(
-        <div className="grid w-screen justify-between grid-flow-row grid-cols-2 gap-12">
+        <div className="grid items-center grid-flow-row grid-cols-2">
             {
             imagesCard.map((index) =>
                 <a 
                     key={index.name}
                     href={index.link}
                     target='_blank'
-                    className="flex flex-col items-center text-center justify-end bg-cover bg-center w-[170px] h-[147px]" rel="noreferrer"
+                    className="flex flex-col items-center text-center justify-end bg-cover bg-center w-[170px] h-[147px] my-6 mx-3" 
+                    rel="noreferrer"
                 >
                 <Image alt={index.name} src={index.img} className='-z-20' />
 

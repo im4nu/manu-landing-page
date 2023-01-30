@@ -63,7 +63,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex">
+          <div className="flex flex-row justify-center items-center">
             <AboutCard />
           </div>
         </section>
