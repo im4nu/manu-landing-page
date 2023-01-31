@@ -27,13 +27,19 @@ export default function AboutCard(){
             {
             imagesCard.map((index) =>
                 <a 
-                    key={index.name}
-                    href={index.link}
-                    target='_blank'
-                    className="flex flex-col items-center text-center justify-end bg-cover bg-center w-[170px] h-[147px] my-6 mx-3" 
-                    rel="noreferrer"
+                 key={index.name}
+                 href={index.link}
+                 target='_blank'
+                 className="flex flex-col items-center text-center justify-end bg-cover bg-center w-[170px] h-[147px] my-6 mx-3" 
+                 rel="noreferrer"
                 >
-                <Image alt={index.name} src={index.img} className='-z-20' />
+                <Image
+                 width={543}
+                 height={285} 
+                 alt={index.name} 
+                 src={index.img} 
+                 className='-z-20 w-full h-full'
+                />
 
                 <div className="flex flex-col -mt-16">
                     <h2>{index.name}</h2>
