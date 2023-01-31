@@ -2,11 +2,22 @@ import AboutCard from "@/components/aboutCard";
 import GlobalButton from "@/components/button";
 import DesignPattern from "@/components/designPattern";
 import Head from "next/head";
-import Image from "next/image";
-import { FiGithub, FiInstagram, FiMail } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiMail, FiArrowUp } from "react-icons/fi";
 import { BiWorld } from "react-icons/bi";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [backToTop, setBackToTop] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", ChangeMenu);
+  }, []);
+
+  function ChangeMenu() {
+    if (window.scrollY != 0) {
+      setBackToTop(true);
+    }
+  }
   return (
     <>
       <Head>
@@ -17,7 +28,7 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col w-screen text-primary-white">
-        <nav className="fixed w-screen py-6 px-9 bgNav">
+        <nav className="fixed w-screen py-6 px-9 bgNav z-50">
           <ul className="flex w-full justify-around items-center flex-row text-sm">
             <li>
               <a href="#home">Início</a>
@@ -57,7 +68,7 @@ export default function Home() {
           <div className="flex flex-col w-screen h-screen bg-hero bg-cover bg-right"></div>
         </section>
 
-        <section id="about" className="flex flex-col w-screen gap-8 py-24">
+        <section id="about" className="flex flex-col w-screen gap-8 pt-24">
           <div className="flex flex-col text-primary-white text-center justify-center px-8 gap-8">
             <p className="text-sm">Sobre</p>
 
@@ -81,7 +92,7 @@ export default function Home() {
         </section>
 
         <section id="services" className="flex flex-col w-screen">
-          <div className="flex flex-col text-primary-white justify-center px-8 gap-8">
+          <div className="flex flex-col text-primary-white justify-center pt-24 px-8 gap-8">
             <p className="text-sm text-center">Serviços</p>
 
             <h2 className="text-4xl">
@@ -142,6 +153,15 @@ export default function Home() {
             </div>
           </div>
         </footer>
+
+        {backToTop && (
+          <a
+            href="#home"
+            className="fixed bottom-4 right-4 rounded-full bg-primary-green py-4 px-4"
+          >
+            <FiArrowUp size={16} color="#DEDEDE" />
+          </a>
+        )}
       </main>
     </>
   );
