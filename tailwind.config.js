@@ -15,15 +15,7 @@ module.exports = {
       },
       backgroundImage: {
         'hero': "url('/assets/hero.png')",
-        'vendas': "url('/assets/vendas-card.png')",
-        'disney': "url('/assets/disney-card.png')",
-        'grupow': "url('/assets/grupow-card.png')",
-        'jedigital': "url('/assets/jedigital-card.png')",
-        'recon': "url('/assets/recon-card.png')",
-        'presponto': "url('/assets/presponto-card.png')",
-        'prespontoSite': "url('/assets/presponto-site-card.png')",
-        'mila': "url('/assets/mila-moura-card.png')",
-        'timeline': "url('/assets/timeline.png')",
+        'heroDesktop': "url('/assets/heroDesktop.png')",
       }
     },
   },

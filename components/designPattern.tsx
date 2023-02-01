@@ -1,35 +1,35 @@
-import Image from "next/image";
-import { FiCommand, FiPenTool, FiMonitor } from "react-icons/fi";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { prototype, develop, webDesign } from "./images";
+import Image from 'next/image';
+import { FiCommand, FiPenTool, FiMonitor } from 'react-icons/fi';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { prototype, develop, webDesign } from './images';
 
 export default function DesignPattern() {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const services = [
     {
-      icon: <FiCommand size={24} color={"#DEDEDE"} />,
+      icon: <FiCommand size={24} color={'#DEDEDE'} />,
       images: prototype,
-      alt: "Imagem do serviço prototipagem",
-      title: "Prototipagem",
+      alt: 'Imagem do serviço prototipagem',
+      title: 'Prototipagem',
       description:
-        "Traga à vida uma ideia que você tem da melhor maneira possível!",
+        'Traga à vida uma ideia que você tem da melhor maneira possível!',
     },
     {
-      icon: <FiPenTool size={24} color={"#DEDEDE"} />,
+      icon: <FiPenTool size={24} color={'#DEDEDE'} />,
       images: webDesign,
-      alt: "Imagem do serviço webdesign",
-      title: "WebDesign",
+      alt: 'Imagem do serviço webdesign',
+      title: 'WebDesign',
       description:
-        "Dê uma nova cara ao seu site com alguém que entende do assunto",
+        'Dê uma nova cara ao seu site com alguém que entende do assunto',
     },
     {
-      icon: <FiMonitor size={24} color={"#DEDEDE"} />,
+      icon: <FiMonitor size={24} color={'#DEDEDE'} />,
       images: develop,
-      alt: "Imagem do serviço desenvolvimento",
-      title: "Desenvolvimento",
+      alt: 'Imagem do serviço desenvolvimento',
+      title: 'Desenvolvimento',
       description:
-        "Não se preocupe com mais nada, apenas em divulgar seu novo site 😉",
+        'Não se preocupe com mais nada, apenas em divulgar seu novo site 😉',
     },
   ];
   function handleSlide(step: number) {
@@ -38,11 +38,20 @@ export default function DesignPattern() {
   return (
     <div className="flex flex-col">
       <div className="flex">
-        <ul className="flex flex-row justify-between w-full">
+        <ul className="flex flex-row justify-between items-center w-full">
           {services.map((item, index) => (
             <li key={item.alt}>
-              <button className="px-4" onClick={() => handleSlide(index)}>
+              <button
+                id="serviceButton"
+                className={
+                  index === currentStep
+                    ? 'selected'
+                    : 'flex flex-col items-center text-center'
+                }
+                onClick={() => handleSlide(index)}
+              >
                 {item.icon}
+                {/* <p className="text-xs">{item.title}</p> */}
               </button>
             </li>
           ))}
@@ -54,9 +63,9 @@ export default function DesignPattern() {
           <AnimatePresence exitBeforeEnter>
             <motion.div
               key={services[currentStep].alt}
-              initial={{ x: 10, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -10, opacity: 0 }}
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 10, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
               <Image

@@ -1,21 +1,25 @@
-import AboutCard from "@/components/aboutCard";
-import GlobalButton from "@/components/button";
-import DesignPattern from "@/components/designPattern";
-import Head from "next/head";
-import { FiGithub, FiInstagram, FiMail, FiArrowUp } from "react-icons/fi";
-import { BiWorld } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { motion } from 'framer-motion';
+import AboutCard from '@/components/aboutCard';
+import GlobalButton from '@/components/button';
+import DesignPattern from '@/components/designPattern';
+import Head from 'next/head';
+import { FiGithub, FiInstagram, FiMail, FiArrowUp } from 'react-icons/fi';
+import { BiWorld } from 'react-icons/bi';
+import { useState, useEffect } from 'react';
+import SecondaryButton from '@/components/secondaryButton';
 
 export default function Home() {
   const [backToTop, setBackToTop] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", ChangeMenu);
+    window.addEventListener('scroll', ChangeMenu);
   }, []);
 
   function ChangeMenu() {
     if (window.scrollY != 0) {
       setBackToTop(true);
+    } else {
+      setBackToTop(false);
     }
   }
   return (
@@ -28,60 +32,76 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col w-screen text-primary-white">
-        <nav className="fixed w-screen py-6 px-9 bgNav z-50">
-          <ul className="flex w-full justify-around items-center flex-row text-sm">
-            <li>
-              <a href="#home">Início</a>
-            </li>
-            <li>
-              <a href="#about">Sobre</a>
-            </li>
-            <li>
-              <a href="#services">Serviços</a>
-            </li>
-            <li>
-              <a href="#contats">Contatos</a>
-            </li>
-          </ul>
+        <nav className="fixed w-screen py-6 px-9 z-50 justify-center">
+          <div className="flex w-10/12 justify-end">
+            <ul className="flex w-1/3 justify-around items-center flex-row text-sm">
+              <li>
+                <a href="#home">Início</a>
+              </li>
+              <li>
+                <a href="#about">Sobre</a>
+              </li>
+              <li>
+                <a href="#services">Serviços</a>
+              </li>
+              <li>
+                <a href="#contats">Contatos</a>
+              </li>
+              <SecondaryButton label="Contactar" />
+            </ul>
+          </div>
         </nav>
 
-        <section
-          id="home"
-          className="flex h-full flex-col w-screen text-primary-white"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex flex-col px-9 gap-3 mt-28">
-            <p>Olá! Seja bem vindo! 👋</p>
+          <section
+            id="home"
+            className="flex h-full flex-col w-screen text-primary-white lg:flex-row-reverse lg:justify-end lg:w-screen"
+          >
+            <div className="flex flex-col px-9 gap-3 mt-28 lg:justify-center lg:w-1/3 lg:pr-24 lg:pb-44">
+              <p>Olá! Seja bem vindo! 👋</p>
 
-            <h1 className="text-4xl">
-              WebDesign e Desenvolvimento de sites modernos
-            </h1>
+              <h1 className="text-4xl">
+                WebDesign e Desenvolvimento de sites modernos
+              </h1>
 
-            <p className="mt-4">
-              Clique no botão abaixo e veja alguns sites feitos por mim!
-            </p>
+              <p className="mt-4">
+                Clique no botão abaixo e veja alguns sites feitos por mim!
+              </p>
 
-            <div className="flex my-4">
-              <GlobalButton />
+              <div className="flex my-4">
+                <GlobalButton />
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-col w-screen h-screen bg-hero bg-cover bg-right"></div>
-        </section>
+            <aside className="flex flex-col w-screen h-screen bg-hero bg-cover bg-right lg:bg-heroDesktop lg:bg-left lg:bg-contain lg:bg-no-repeat lg:w-1/2 lg:min-h-screen" />
+          </section>
+        </motion.div>
 
-        <section id="about" className="flex flex-col w-screen gap-8 pt-24">
-          <div className="flex flex-col text-primary-white text-center justify-center px-8 gap-8">
+        <section
+          id="about"
+          className="flex flex-col w-screen gap-8 pt-24 lg:justify-center lg:items-center"
+        >
+          <div className="flex w-screen flex-col text-primary-white text-center justify-center px-8 gap-8 lg:px-60 xl:w-1/2 xl:px-14 2xl:w-1/3">
             <p className="text-sm">Sobre</p>
 
+            <h2 className="text-4xl lg:px-24">
+              Mas afinal de contas, <span>quem sou</span> eu?
+            </h2>
+
             <p>
-              Eu me chamo Emmanuel Rodrigues, sou <span>WebDesigner</span> e{" "}
+              Eu me chamo Emmanuel Rodrigues, sou <span>WebDesigner</span> e{' '}
               <span>Programador</span>. Já fui gerente de T.I de um laboratório
-              de análises clínicas e atuo na área da tecnologia a{" "}
+              de análises clínicas e atuo na área da tecnologia a{' '}
               <span>mais de 7 anos</span>
             </p>
 
             <p className="text-sm">
-              Conheça alguns dos meus trabalhos, todos abaixo{" "}
-              <span>são reais</span> e feitos para empresas de renome dentre o{" "}
+              Conheça alguns dos meus trabalhos, todos abaixo{' '}
+              <span>são reais</span> e feitos para empresas de renome dentre o{' '}
               <span>mercado mundial</span>
             </p>
           </div>
@@ -116,7 +136,7 @@ export default function Home() {
 
                 <p>
                   <span>Mais de 32 mil</span> empresas empregadoras fecharam as
-                  portas nos últimos 2 anos e dentre elas{" "}
+                  portas nos últimos 2 anos e dentre elas{' '}
                   <span>mais de 12 mil não possuíam websites</span> para
                   aumentar sua captação de clientes
                 </p>
@@ -124,7 +144,7 @@ export default function Home() {
 
               <ul className="flex flex-col text-left px-8 ServiceList">
                 <li className="text-sm">
-                  Você pode ter visitas no seu site de outros lugres{" "}
+                  Você pode ter visitas no seu site de outros lugres{' '}
                   <span>DO MUNDO</span>
                 </li>
                 <li className="text-sm">
@@ -146,10 +166,34 @@ export default function Home() {
             <p>Contatos:</p>
 
             <div className="flex flex-row justify-evenly px-8">
-              <FiGithub color="#DEDEDE" size={24} />
-              <BiWorld color="#DEDEDE" size={24} />
-              <FiInstagram color="#DEDEDE" size={24} />
-              <FiMail color="#DEDEDE" size={24} />
+              <a
+                href="https://github.com/im4nu"
+                target={'_blank'}
+                rel="noreferrer"
+              >
+                <FiGithub color="#DEDEDE" size={24} />
+              </a>
+              <a
+                href="https://manu-seven.vercel.app/"
+                target={'_blank'}
+                rel="noreferrer"
+              >
+                <BiWorld color="#DEDEDE" size={24} />
+              </a>
+              <a
+                href="https://www.instagram.com/arrozkofeijao/"
+                target={'_blank'}
+                rel="noreferrer"
+              >
+                <FiInstagram color="#DEDEDE" size={24} />
+              </a>
+              <a
+                href="mailto:victorx811@gmail.com?"
+                target={'_blank'}
+                rel="noreferrer"
+              >
+                <FiMail color="#DEDEDE" size={24} />
+              </a>
             </div>
           </div>
         </footer>
